@@ -4,14 +4,9 @@ new Vue ({
 
     data: {
         list:[],
-		dinamicIndex: 0
-    },
-
-    methods: {
-
-        
-     
-
+		dinamicIndex: 0,
+        generi: [],
+        select: 'all'
     },
 
     mounted() {
@@ -21,11 +16,19 @@ new Vue ({
           .then((re) => {
 
 			self.list.push(re.data.response)
-            console.log(re.data);
-			console.log(this.list);
+            self.list = re.data.response
 
+            self.list.forEach((el) => {
+                if (!self.generi.includes(el.genre)) {
+                  self.generi.push(el.genre)
+                }
+            })
+            
+            console.log(self.list);
+            console.log(self.generi);
         })
-    },
+        
+    }
 
 })
 

@@ -11,16 +11,24 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <header>
-            <div class="container">
-                <img src="logo.png" alt="logo" />
-            </div>
-        </header>
 
         <div id="app">
+            <header>
+                <div class="container">
+                    <img src="logo.png" alt="logo"/>
+                    <div class="selection">
+                      <label for="genre">Selection</label>
+                      <select name="genre" v-model="select">
+                        <option value="all">All</option>
+                        <option v-for="genre in generi" :value="genre">{{genre}}</option>
+                      </select>
+                    </div>
+                </div>
+            </header>
+
             <div class="cds-container container">
                 <!-- Disco ad esempio -->
-                <div class="cd" v-for='(el) in list[dinamicIndex]'>
+                <div class="cd" v-for='(el) in list[dinamicIndex]' v-if="el.genre === select">
                     <img :src="el.poster">
                     <h3>{{el.title}}</h3>
                     <span class="author">{{el.author}}</span>

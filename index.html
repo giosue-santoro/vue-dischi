@@ -21,14 +21,14 @@
                       <select name="genre" v-model="select">
                         <option value="all">All</option>
                         <option v-for="genre in generi" :value="genre">{{genre}}</option>
-                      </select>
+                      </select> 
                     </div>
                 </div>
             </header>
 
             <div class="cds-container container">
                 <!-- Disco ad esempio -->
-                <div class="cd" v-for='(el) in list[dinamicIndex]' v-if="el.genre === select">
+                <div class="cd" v-for='el in list' v-if="el.genre === select || select === 'all'">
                     <img :src="el.poster">
                     <h3>{{el.title}}</h3>
                     <span class="author">{{el.author}}</span>

@@ -4,7 +4,6 @@ new Vue ({
 
     data: {
         list:[],
-		dinamicIndex: 0,
         generi: [],
         select: 'all'
     },
